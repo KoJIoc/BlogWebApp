@@ -1,0 +1,16 @@
+﻿@using ClassLibrary.Data.Article;
+
+@model ArticleTag
+@{
+    ViewData["Title"] = "Поиск по тегу";
+}
+<h2>Выберите тег</h2>
+<form asp-action="SearchArticle" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="tagID" class="control-label">Тэги</label>
+        <select asp-for="tagID" class="form-control" asp-items="ViewBag.TagId"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Поиск" />
+    </div>
+</form>

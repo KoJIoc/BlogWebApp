@@ -1,0 +1,26 @@
+﻿@model ClassLibrary.Data.Article.Article
+@{
+    ViewBag.Title = "Удаление статьи";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Название статьи</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>Текст статьи</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+    <div>
+        <form asp-controller="Home" asp-action="Delete" method="post">
+            <div class="form-group">
+                <input type="submit" value="Удалить" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<ClassLibrary.Data.Article.Article>
+@{
+    ViewData["Title"] = $"Home Page {@User.Identity.Name}";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+        <h2>Добро пожаловать, @User.Identity.Name</h2>
+        <h2>Ваш блог</h2>
+
+        <a asp-action="CreateArticle">Добавить статью</a>
+        <a asp-action="CreateTag" asp-controller="Home">Добавить теги</a>
+        <a asp-action="SearchArticl" asp-controller="Home">Поиск по тегу</a>
+
+        <table class="table">
+        <tr><td>Название статьи</td><td>Текст статьи</td><td>Дата создания</td></tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.DateOfCreation</td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Информация</a> |
+                        <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a> |
+                        <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Удалить</a>
+                        <a asp-action="CreateComment" asp-controller="Home">Прокоментировать</a> |
+                        <a asp-action="SeeComment" asp-controller="Home">Коментарии</a> |
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="Выход" />
+        </form>
+}
+else
+{
+    <h2>Для начала работы вам нужно войти на сайт или проивзвести регистрацию!</h2>
+    <form>
+        <input type="submit" value="Авторизоваться" asp-controller="Account" asp-action="Login"/>
+        <input type="submit" value="Зарегистрироваться" asp-controller="Account" asp-action="Register"/>
+    </form>
+}

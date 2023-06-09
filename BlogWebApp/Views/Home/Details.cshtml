@@ -1,0 +1,17 @@
+﻿@model ClassLibrary.Data.Article.Article
+@{
+    ViewBag.Title = Model.Title;
+}
+<h2>Пользователь @Model.Title</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Название статьи</dt>
+        <dd>@Model.Title</dd>
+
+        <dt>Текст статьи</dt>
+        <dd>@Model.Description</dd>
+
+        <dt>Дата создания</dt>
+        <dd>@Model.DateOfCreation</dd>
+    </dl>
+</div>

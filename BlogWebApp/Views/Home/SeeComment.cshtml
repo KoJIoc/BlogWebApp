@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BlogWebApp.Models.Comment>
+
+<table class="table">
+    <tr><td>Комментатор</td><td>Текст комментария</td><td>Дата</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserLogin</td>
+            <td>@item.Text</td>
+            <td>@item.Date</td>
+        </tr>
+    }
+</table>
